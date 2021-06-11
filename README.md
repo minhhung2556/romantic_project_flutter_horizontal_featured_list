@@ -1,16 +1,18 @@
-# Flutter Rating Stars
+# Flutter Horizontal Featured List
 
-A Flutter package to create Rating Stars bar. It will be useful for your awesome app.
+A Flutter package to create Horizontal Featured List. It helps you in saving time during the development of many same designs. It will be useful for your awesome app.
 
-![Imgur](https://imgur.com/download/9my0OAt)
+![Imgur](https://imgur.com/download/5CIT2yb)
 
 ### Example
 
 ```dart
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'dart:math' as math;
+import 'package:flutter_horizontal_featured_list/flutter_horizontal_featured_list.dart';
 
 class _MyAppState extends State<MyApp> {
-  double value = 3.5;
+  List<Color> colors = List.generate(20, (index) => randomColor());
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,43 +24,65 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Example'),
         ),
+        backgroundColor: Colors.white,
         body: Center(
-          child: StarRating(
-            value: value,
-            onValueChanged: (v) {
-              //
-              setState(() {
-                value = v;
-              });
+          child: HorizontalFeaturedList(
+            itemColorBuilder: (context, index) => colors[index],
+            itemCount: colors.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Column(
+                children: [
+                  Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.face,
+                        size: 24,
+                        color: Colors.black45,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            '($index) What is Lorem Ipsum?',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        '($index) Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
             },
-            starBuilder: (index, color) => Icon(
-              Icons.ac_unit_outlined,
-              color: color,
-            ),
-            starCount: 5,
-            starSize: 20,
-            valueLabelColor: const Color(0xff9b9b9b),
-            valueLabelTextStyle: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-                fontSize: 12.0),
-            valueLabelRadius: 10,
-            maxValue: 5,
-            starSpacing: 2,
-            maxValueVisibility: true,
-            valueLabelVisibility: true,
-            animationDuration: Duration(milliseconds: 1000),
-            valueLabelPadding:
-                const EdgeInsets.symmetric(vertical: 1, horizontal: 8),
-            valueLabelMargin: const EdgeInsets.only(right: 8),
-            starOffColor: const Color(0xffe7e8ea),
-            starColor: Colors.yellow,
+            onPressedItem: () {},
+            onPressedSeeAll: () {},
+            titleText: 'Ongoing Projects',
+            seeAllText: 'See All',
           ),
         ),
       ),
     );
   }
+}
+
+Color randomColor() {
+  var g = math.Random.secure().nextInt(255);
+  var b = math.Random.secure().nextInt(255);
+  var r = math.Random.secure().nextInt(255);
+  return Color.fromARGB(255, r, g, b);
 }
 ```
 

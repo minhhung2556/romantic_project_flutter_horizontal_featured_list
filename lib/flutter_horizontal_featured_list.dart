@@ -109,7 +109,7 @@ class HorizontalFeaturedList extends StatefulWidget {
   /// - <See All> text button is created by [seeAllText] and [seeAllTextStyle] at the top-right, it has an [onPressedSeeAll] action helps in navigating to a full listing screen.
   /// - <Featured List View> is created by [itemBuilder], [itemCount] at the bottom.
   ///
-  /// This widget has a default design helps you in saving time to create many same same designs.
+  /// This widget has a default design helps you in saving time to create many of same designs.
   /// - It need a [height], this is total height of this widget, lets the [Column] inside knows its children size.
   /// - [margin] : this is the spacing from parent to the left side of <Title>, and from parent to the right side of <See All>, and spacing between <Featured List View> items also.
   /// - Each item in <Featured List View> has a default style with [itemPadding], [overlayColor] is used for pressing animation, [itemBorderRadius] is the border radius, [onPressedItem] to navigate to a detail screen, [itemWidth] lets the horizontal [ListView] knows its children size.
