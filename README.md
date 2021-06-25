@@ -2,7 +2,7 @@
 
 A Flutter package to create Horizontal Featured List. It helps you in saving time during the development of many same designs. It will be useful for your awesome app.
 
-![Imgur](https://imgur.com/download/5CIT2yb)
+![Demo](./demo.gif)
 
 ### Example
 
